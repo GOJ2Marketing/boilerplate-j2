@@ -43,7 +43,13 @@ The following is a list of the custom components included in the boilerplate
 
 ### Section
 ```jsx
-<Section className={}>
+<Section 
+    className={Styles.class}
+    id={string} // Helps search engines understand the page breakdown, and provides anchor points for screen readers and navigation links 
+    ariaLabel={string} // Important for screen readers and overall accessibility 
+    data-anything={string} // Useful for js and for adding other info about the data provided in the section: data-author="John Doe" data-publication-date="2023-04-30"
+    ref={string}
+>
     ...children
 </Section>
 ```
@@ -61,10 +67,10 @@ The following is a list of the custom components included in the boilerplate
     className={Styles.class} 
     columns={number} 
     gap={number} 
-    template={"1fr 1fr 1fr"} 
-    laptop={"2fr 1fr 1fr"}
-    tablet={"1fr 1fr"}
-    phone={"100%"}
+    template={"1fr 1fr 1fr"} // Default layout for anything larger than a laptop
+    laptop={"2fr 1fr 1fr"} // Replaces the value of template when laptop size in reached
+    tablet={"1fr 1fr"} // and so on...
+    phone={"100%"} // and so on...
 >
     ...children
 </Grid>

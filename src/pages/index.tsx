@@ -4,9 +4,11 @@ import Grid from '@/comps/Grid/Grid'
 
 export default function Home() {
   return (
-    <Section>
+    <Section id='intro' ariaLabel='Introduction to my page' data-section={'make custom data-* attributes'}>
       <Row>
         <h1>Heading 1 Text</h1>
+      </Row>
+      <Row fullWidth={false}>
         <Grid columns={3} template='2fr 1fr 1fr' gap={30} laptop='3fr 2fr 2fr' tablet='1fr 1fr' phone='100%'>
           <div>
             <h2>Heading 2 Text</h2>
