@@ -36,3 +36,36 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Components
+
+The following is a list of the custom components included in the boilerplate
+
+### Section
+```jsx
+<Section className={}>
+    ...children
+</Section>
+```
+
+### Row
+```jsx
+<Row className={}>
+    ...children
+</Row>
+```
+
+### Grid
+```jsx
+<Grid 
+    className={Styles.class} 
+    columns={number} 
+    gap={number} 
+    template={"1fr 1fr 1fr"} 
+    laptop={"2fr 1fr 1fr"}
+    tablet={"1fr 1fr"}
+    phone={"100%"}
+>
+    ...children
+</Grid>
+```
