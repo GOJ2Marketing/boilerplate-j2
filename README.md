@@ -94,6 +94,6 @@ Instead of adding a head to every page, you can simply drop an SEO component ont
     facebookTitle="Page Title" // for if you want the page title to appear differently on facebook. Same for other facebook/twitter props
     facebookDescription=""
     facebookImage=""
-    
+    // Check component to see all
 />
 ```

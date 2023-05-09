@@ -1,5 +1,5 @@
 import "@/styles/globals.scss";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, AnimateSharedLayout } from "framer-motion";
 import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import { AppProps } from "next/app";
@@ -16,30 +16,16 @@ export default function App({ Component, pageProps }: AppProps) {
     });
 
     // Set up a requestAnimationFrame loop to call the raf method of the lenis instance
-    function raf(time:any) {
+    function raf(time: any) {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
-
   });
 
   return (
-    <AnimatePresence
-      mode="wait"
-      initial={false}
-      onExitComplete={() => window.scrollTo(0, 0)}
-    >
-      <motion.div
-        key={router.route}
-        initial={{ translateX: 0 }}
-        animate={{ translateX: 0 }}
-        exit={{ translateX: 0 }}
-        layoutId="main"
-        transition={{
-          damping: 20,
-        }}
-      >
+    <AnimatePresence mode="wait" key={router.route}>
+      <motion.div layoutId="main">
         <Component {...pageProps} key={pageKey} />
       </motion.div>
     </AnimatePresence>

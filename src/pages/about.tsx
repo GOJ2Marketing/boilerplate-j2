@@ -7,6 +7,19 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function AboutUs() {
   return (
     <AnimatePresence mode="wait">
+      <motion.div
+        layoutId="Hero"
+        key="AboutHero"
+        initial={{ x: 100 }}
+        animate={{ x: 0 }}
+        exit={{ x: -100 }}
+      >
+        <Section id="Hero" ariaLabel="Page Title">
+          <Row>
+            <h1>Home Page</h1>
+          </Row>
+        </Section>
+      </motion.div>
       <Section
         id="intro"
         ariaLabel="Introduction to my page"
@@ -45,6 +58,6 @@ export default function AboutUs() {
           <Link href="/">Home</Link>
         </Row>
       </Section>
-      </AnimatePresence>
+    </AnimatePresence>
   );
 }
