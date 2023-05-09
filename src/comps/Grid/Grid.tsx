@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './Grid.module.scss';
 import { ReactNode } from 'react';
 import { useEffect, useState } from 'react';
-import breakpoints from '../../../breakpoints';
+import {breakpoints} from '../../../constants';
 
 interface GridProps {
   children: ReactNode;
@@ -27,38 +27,37 @@ interface GridProps {
     useEffect(() => {
       const updateGridStyles = () => {
         const screenWidth = window.innerWidth;
-      
+    
         if (phone && screenWidth <= breakpoints.phone) {
-          setGridStyle({
-            ...gridStyle,
+          setGridStyle((prevState) => ({
+            ...prevState,
             gridTemplateColumns: phone,
-          });
+          }));
         } else if (tablet && screenWidth <= breakpoints.tablet) {
-          setGridStyle({
-            ...gridStyle,
+          setGridStyle((prevState) => ({
+            ...prevState,
             gridTemplateColumns: tablet,
-          });
+          }));
         } else if (laptop && screenWidth <= breakpoints.laptop) {
-          setGridStyle({
-            ...gridStyle,
+          setGridStyle((prevState) => ({
+            ...prevState,
             gridTemplateColumns: laptop,
-          });
+          }));
         } else {
-          setGridStyle({
-            ...gridStyle,
+          setGridStyle((prevState) => ({
+            ...prevState,
             gridTemplateColumns: template || `repeat(${columns}, 1fr)`,
-          });
+          }));
         }
       };
-      
-  
+    
       window.addEventListener('resize', updateGridStyles);
       updateGridStyles();
-  
+    
       return () => {
         window.removeEventListener('resize', updateGridStyles);
       };
-    }, [template, columns, laptop, gridStyle, phone, tablet]);
+    }, [template, columns, laptop, phone, tablet]);    
   
     return (
       <div className={`${styles.grid} ${className}`} style={gridStyle}>
