@@ -3,23 +3,44 @@ import Row from "@/comps/Row/Row";
 import Grid from "@/comps/Grid/Grid";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import { useRouter } from "next/router";
 
 export default function AboutUs() {
+  const router = useRouter();
+
   return (
-    <AnimatePresence mode="wait">
-      <motion.div
-        layoutId="Hero"
-        key="AboutHero"
-        initial={{ x: 100 }}
-        animate={{ x: 0 }}
-        exit={{ x: -100 }}
-      >
-        <Section id="Hero" ariaLabel="Page Title">
-          <Row>
-            <h1>Home Page</h1>
+    <div>
+      <AnimatePresence mode="wait">
+        <Section id="Hero" ariaLabel="Page Title" padding="noTop">
+          <motion.div
+            layoutId="thumbnail"
+            key={"aboutThumb"}
+            initial={{ scale: 1 }}
+            transition={{ duration: 1 }}
+          >
+            <Image
+              src={"/Filler-image.svg"}
+              alt="Filler Image"
+              width={1519}
+              height={759}
+            />
+          </motion.div>
+
+          <Row
+            layoutId="Title"
+            key="About"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: [0, 0 ,1] }}
+            exit={{ opacity: [1, 0 ,0] }}
+            transition={{ duration: 1 }}
+          >
+            <h1>About Us</h1>
+            <button onClick={() => router.push("/")}>Home</button>
           </Row>
         </Section>
-      </motion.div>
+      </AnimatePresence>
+
       <Section
         id="intro"
         ariaLabel="Introduction to my page"
@@ -58,6 +79,6 @@ export default function AboutUs() {
           <Link href="/">Home</Link>
         </Row>
       </Section>
-    </AnimatePresence>
+    </div>
   );
 }

@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import { AppProps } from "next/app";
 import Lenis from "@studio-freight/lenis";
+import Nav from "@/comps/Nav/Nav";
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -25,6 +26,9 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <AnimatePresence mode="wait" key={router.route}>
+      <motion.div layoutId="Navigation" key={router.route + "123"}>
+        <Nav />
+      </motion.div>
       <motion.div layoutId="main">
         <Component {...pageProps} key={pageKey} />
       </motion.div>

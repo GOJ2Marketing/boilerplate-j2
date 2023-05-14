@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { SITE_NAME } from "../../../constants";
+import { SITE_NAME } from "../../utils/constants";
 
 interface AppHeadProps {
   title: string;

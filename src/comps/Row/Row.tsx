@@ -1,6 +1,7 @@
 import Styles from './Row.module.scss'
+import { motion, MotionProps } from "framer-motion";
 
-interface SectionProps {
+interface RowProps extends MotionProps {
   children: React.ReactNode;
   className?: string;
   style?: any;
@@ -8,12 +9,13 @@ interface SectionProps {
   padding?: 'full' | 'noTop' | 'noBottom' | 'none';
 }
 
-const Row = ({ className, children, fullWidth, padding = 'full', ...rest }: SectionProps) => {
+const Row = ({ className, children, fullWidth, padding = 'full', ...rest }: RowProps) => {
   const rowClassName = `${Styles.row}${className ? ` ${className}` : ''}${fullWidth ? ` ${Styles.fullWidth}` : ''} ${Styles[padding]}`;
+  
   return ( 
-    <div className={rowClassName} {...rest} >
+    <motion.div className={rowClassName} {...rest}>
       {children}
-    </div>
+    </motion.div>
   );
 }
  

@@ -1,0 +1,39 @@
+@import "@/styles/__settings";
+
+.navigation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+
+    & .navInnerWrapper {
+        display: flex;
+        justify-content: space-between;
+        padding: 16px 0;
+
+        & .logoWrapper {
+            display: flex;
+            align-items: center;
+        
+            & img {
+                width: 100%;
+                height: auto;
+                max-width: 250px;
+                max-height: 50px;
+            }
+        }
+        
+        & .navLinks {
+            display: flex;
+            align-items: center;
+        
+            & a {
+                display: block;
+                margin: 0;
+                padding: 16px;
+            }
+        }
+    }
+
+}

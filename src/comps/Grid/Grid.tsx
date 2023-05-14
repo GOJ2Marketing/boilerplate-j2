@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './Grid.module.scss';
 import { ReactNode } from 'react';
 import { useEffect, useState } from 'react';
-import {breakpoints} from '../../../constants';
+import { BREAKPOINTS } from '../../utils/constants';
 
 interface GridProps {
   children: ReactNode;
@@ -14,31 +14,33 @@ interface GridProps {
   laptop?: string;
   tablet?: string;
   phone?: string;
+  alignment?: 'start' | 'center' | 'end';
 }
 
-  const Grid = ({ children, columns, template, className, gap, laptop, tablet, phone }: GridProps) => {
+  const Grid = ({ children, columns, template, className, gap, laptop, tablet, phone, alignment }: GridProps) => {
     const [gridStyle, setGridStyle] = useState({
       display: 'grid',
       gridTemplateColumns: template || `repeat(${columns}, 1fr)`,
       width: '100%',
       gridGap: `${gap || 0}px`,
+      alignItems: 'start',
     });
   
     useEffect(() => {
       const updateGridStyles = () => {
         const screenWidth = window.innerWidth;
-    
-        if (phone && screenWidth <= breakpoints.phone) {
+      
+        if (phone && screenWidth <= BREAKPOINTS.phone) {
           setGridStyle((prevState) => ({
             ...prevState,
             gridTemplateColumns: phone,
           }));
-        } else if (tablet && screenWidth <= breakpoints.tablet) {
+        } else if (tablet && screenWidth <= BREAKPOINTS.tablet) {
           setGridStyle((prevState) => ({
             ...prevState,
             gridTemplateColumns: tablet,
           }));
-        } else if (laptop && screenWidth <= breakpoints.laptop) {
+        } else if (laptop && screenWidth <= BREAKPOINTS.laptop) {
           setGridStyle((prevState) => ({
             ...prevState,
             gridTemplateColumns: laptop,
@@ -49,7 +51,15 @@ interface GridProps {
             gridTemplateColumns: template || `repeat(${columns}, 1fr)`,
           }));
         }
-      };
+      
+        // Handle alignment
+        if (alignment) {
+          setGridStyle((prevState) => ({
+            ...prevState,
+            alignItems: alignment,
+          }));
+        }
+      };      
     
       window.addEventListener('resize', updateGridStyles);
       updateGridStyles();
@@ -57,7 +67,7 @@ interface GridProps {
       return () => {
         window.removeEventListener('resize', updateGridStyles);
       };
-    }, [template, columns, laptop, phone, tablet]);    
+    }, [template, columns, laptop, phone, tablet, alignment]);    
   
     return (
       <div className={`${styles.grid} ${className}`} style={gridStyle}>
@@ -73,12 +83,14 @@ interface GridProps {
     className: PropTypes.string,
     gap: PropTypes.number,
     laptop: PropTypes.string,
+    alignment: PropTypes.oneOf(['start', 'center', 'end']),
   };
   
   Grid.defaultProps = {
     template: '',
     className: '',
     laptop: '',
+    alignment: 'start'
   };
 
 export default Grid;
