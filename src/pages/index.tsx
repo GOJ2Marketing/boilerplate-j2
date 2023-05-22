@@ -95,7 +95,6 @@ export default function Home() {
               />
               <Blurb
                 title="Service 3"
-                image="/sample-pic-3.jpg"
                 desc="This is a sample sentence. This should provide a brief description about the above service."
                 link="/"
                 // imageRatio={35}
