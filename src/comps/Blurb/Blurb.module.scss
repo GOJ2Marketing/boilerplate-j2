@@ -1,0 +1,45 @@
+@import "@/styles/__settings";
+
+.blurb {
+    background-color: $white;
+    box-shadow: 10px 10px 50px rgba(0,0,0,0.1);
+    border-radius: $borderRadius;
+    overflow: hidden;
+
+    & .image {
+        position: relative;
+    
+        & a {
+            display: block;
+            width: 100%;
+            padding: 30% 0;
+    
+            & img {
+                width: auto;
+                height: auto;
+                min-width: 100%;
+                min-height: 100%;
+            }
+        }
+    }
+
+    & .desc {
+        padding: $defaultSpacing $defaultSpacing 50px;
+
+        & h3 {
+            margin-bottom: $defaultSpacing;
+            display: block;
+            width: 100%;
+        }
+
+        & p {
+            display: block;
+            width: 100%;
+            margin-bottom: $defaultSpacing;
+        }
+
+        & a {
+
+        }
+    }
+}

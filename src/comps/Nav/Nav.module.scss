@@ -6,11 +6,16 @@
     left: 0;
     width: 100%;
     z-index: 999;
+    overflow: visible;
 
     & .navInnerWrapper {
         display: flex;
         justify-content: space-between;
         padding: 16px 0;
+
+        & a {
+            display: block;
+        }
 
         & .logoWrapper {
             display: flex;
@@ -19,7 +24,7 @@
             & img {
                 width: 100%;
                 height: auto;
-                max-width: 250px;
+                max-width: 200px;
                 max-height: 50px;
             }
         }
@@ -27,11 +32,38 @@
         & .navLinks {
             display: flex;
             align-items: center;
+            margin: 0;
         
             & a {
                 display: block;
                 margin: 0;
                 padding: 16px;
+            }
+
+            .topLink {
+                position: relative;
+
+                & .subMenu {
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    margin: 0;
+                    max-width: none;
+                    width: 200%;
+                    background: $black;
+                    color: $white;
+                    transform-origin: top;
+                    border: 1px solid $black;
+                    border-radius: 8px;
+                    overflow: hidden;
+
+                    & li {
+                        &:hover {
+                            background: $white;
+                            color: $black;
+                        }
+                    }
+                }
             }
         }
     }

@@ -18,10 +18,14 @@ body, html {
   overflow-x: hidden;
 
   // Use this query to make styles for users who have their computer set to dark mode
-  @media (prefers-color-scheme: dark) {
-    background-color: $black;
-    color: $white;
-  }
+  // @media (prefers-color-scheme: dark) {
+  //   background-color: $black;
+  //   color: $white;
+  // }
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-weight: 600;
 }
 
 h1 {

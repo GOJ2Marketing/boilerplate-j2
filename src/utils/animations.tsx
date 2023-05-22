@@ -14,37 +14,73 @@ export const AnimateFade = {
 }
 
 export const AnimateFadeLeft = {
-    initial: {
-        opacity: 0,
-        x: -100,
+    parent: {
+      visible: {
+        transition: {
+          when: "beforeChildren",
+          staggerChildren: 0.3,
+        },
+      },
+      hidden: {
+        transition: {
+          when: "beforeChildren",
+          staggerChildren: 0.3,
+          staggerDirection: -1,
+        },
+      },
     },
-    animate: {
-        opacity: 1,
-        x: 0,
+    child: {
+      visible: { opacity: 1, x: 0 },
+      hidden: { opacity: 0, x: -100 },
     },
-    exit: {
-        opacity: 0,
-        x: -100,
-    },
-    transition: {
-        staggerChildren: 1,
-    }
-}
+  };
 
 export const AnimateFadeRight = {
-    initial: {
-        opacity: 0,
-        x: 100,
+    parent: {
+      visible: {
+        transition: {
+          when: "beforeChildren",
+          staggerChildren: 0.05,
+        },
+      },
+      hidden: {
+        transition: {
+          when: "afterChildren",
+          staggerChildren: 0.05,
+          staggerDirection: -1,
+        },
+      },
     },
-    animate: {
+    child: {
+      visible: { opacity: 1, x: 0 },
+      hidden: { opacity: 0, x: 50 },
+    },
+  };
+
+  export const MenuDropDown = {
+    parent: {
+      visible: {
+        scaleY: 1,
         opacity: 1,
-        x: 0,
-    },
-    exit: {
+        transition: {
+          when: "beforeChildren",
+          staggerChildren: 0.05,
+          duration: .2,
+        },
+      },
+      hidden: {
+        scaleY: 0,
         opacity: 0,
-        x: 100,
+        transition: {
+          when: "beforeChildren",
+          staggerChildren: 0,
+          staggerDirection: -1,
+          duration: .2,
+        },
+      },
     },
-    transition: {
-        staggerChildren: 1,
-    }
-}
+    child: {
+      visible: { opacity: 1, x: 0 },
+      hidden: { opacity: 0, x: 30 },
+    },
+  };
