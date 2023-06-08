@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import styles from './Grid.module.scss';
 import { ReactNode } from 'react';
 import { useEffect, useState } from 'react';
-import { BREAKPOINTS } from '../../utils/constants';
+import { BREAKPOINTS, DEFAULT_SPACING } from '../../utils/constants';
+import { MotionProps } from 'framer-motion';
 
-interface GridProps {
+interface GridProps extends MotionProps {
   children: ReactNode;
   columns: number;
   template?: string;
@@ -22,7 +23,7 @@ interface GridProps {
       display: 'grid',
       gridTemplateColumns: template || `repeat(${columns}, 1fr)`,
       width: '100%',
-      gridGap: `${gap || 0}px`,
+      gridGap: `${gap || DEFAULT_SPACING}px`,
       alignItems: 'start',
     });
   

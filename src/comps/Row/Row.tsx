@@ -4,16 +4,18 @@ import { motion, MotionProps } from "framer-motion";
 interface RowProps extends MotionProps {
   children: React.ReactNode;
   className?: string;
+  ariaLabel?: string;
   style?: any;
   fullWidth?: boolean;
   padding?: 'full' | 'noTop' | 'noBottom' | 'none';
+  id?: string;
 }
 
-const Row = ({ className, children, fullWidth, padding = 'full', ...rest }: RowProps) => {
+const Row = ({ className, id, children, fullWidth, padding = 'full', ariaLabel, ...rest }: RowProps) => {
   const rowClassName = `${Styles.row}${className ? ` ${className}` : ''}${fullWidth ? ` ${Styles.fullWidth}` : ''} ${Styles[padding]}`;
   
   return ( 
-    <motion.div className={rowClassName} {...rest}>
+    <motion.div id={id ? id : ""} className={rowClassName} aria-label={ariaLabel} {...rest}>
       {children}
     </motion.div>
   );

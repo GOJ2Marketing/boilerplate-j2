@@ -1,6 +1,8 @@
 export const SITE_NAME = "Website Name";
 export const LOGO_HORIZONTAL = "/vercel.svg";
 
+export const DEFAULT_SPACING = 30;
+
 export const BREAKPOINTS = {
   laptop: 1440,
   tablet: 1080,
