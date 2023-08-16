@@ -11,7 +11,7 @@ export default function HomeHero() {
         <h1 className="text-6xl font-bold text-center">
           J2 Marketing X Mindscrape
         </h1>
-        <SwipeText text="Good luck with the project :0" className="mt-5"/>
+        <SwipeText text="npm i big dawg" className="mt-5"/>
       </Row>
     </Section>
     <Marquee baseVelocity={.7}>

@@ -8,40 +8,39 @@ const tiers = [
       name: 'Sanity.io',
       id: 'tier-basic',
       href: 'https://www.sanity.io/docs/create-a-sanity-project',
-      price: { monthly: '$15', annually: '$12' },
+      task: { taskDesc: 'CMS Setup', subDesc: 'View the docs below' },
       button: 'Sanity Documentation',
-      description: 'Everything necessary to get started.',
-      features: ['5 products', 'Up to 1,000 subscribers', 'Basic analytics', '48-hour support response time'],
+      description: 'npm create sanity@latest',
+      features: [
+        'login type Google, use info@goj2.com',
+        'create a new project',
+        'name project to client',
+        'start from clean template, or blog',
+      ],
     },
     {
       name: 'tailwind.config.ts',
       id: 'tier-essential',
-      href: '#',
-      price: { monthly: '$30', annually: '$24' },
+      href: '/tailwind',
+      task: { taskDesc: 'Style Defaults', subDesc: 'Use the testing page below to configure your default styles' },
       button: 'Tailwind Testing Page',
-      description: 'Everything in Basic, plus essential tools for growing your business.',
-      features: [
-        '25 products',
-        'Up to 10,000 subscribers',
-        'Advanced analytics',
-        '24-hour support response time',
-        'Marketing automations',
-      ],
+      description: 'Use design system from Figma',
+      features: ['heading fonts', 'body fonts', 'buttons', 'colors'],
     },
     {
-      name: 'Growth',
+      name: 'Organize Assets',
       id: 'tier-growth',
-      href: '#',
-      price: { monthly: '$60', annually: '$48' },
-      button: 'Sanity Documentation',
-      description: 'Everything in Essential, plus collaboration tools and deeper insights.',
+      href: 'https://j2marketing.teamwork.com/spaces/web-sops/page/home',
+      task: { taskDesc: 'Asset Checklist', subDesc: 'Double check you have everything you need' },
+      button: 'Web SOPs',
+      description: 'Keep track of assets by asking the Project Manager to add them to the project descripton',
       features: [
-        'Unlimited products',
-        'Unlimited subscribers',
-        'Advanced analytics',
-        '1-hour, dedicated support response time',
-        'Marketing automations',
-        'Custom reporting tools',
+        'figma link',
+        'dropbox link',
+        'domain location',
+        'any additional notes from the client',
+        'any additional notes from the designer',
+        'any additional notes from the lead developer',
       ],
     },
   ]
@@ -67,10 +66,9 @@ export default function Example() {
                         {tier.name}
                         </h3>
                         <p className="mt-6 flex items-baseline gap-x-1">
-                        <span className="text-5xl font-bold tracking-tight text-white">{tier.price.monthly}</span>
-                        <span className="text-sm font-semibold leading-6 text-gray-600">/month</span>
+                        <span className="text-5xl font-bold tracking-tight text-white">{tier.task.taskDesc}</span>
                         </p>
-                        <p className="mt-3 text-sm leading-6 text-white">{tier.price.annually} per month if paid annually</p>
+                        <p className="mt-3 text-sm leading-6 text-white">{tier.task.subDesc}</p>
                         <a
                         href={tier.href}
                         aria-describedby={tier.id}
@@ -82,8 +80,7 @@ export default function Example() {
                         <ul role="list" className="mt-6 space-y-3 text-sm leading-6 text-white">
                         {tier.features.map((feature) => (
                             <li key={feature} className="flex gap-x-3">
-                            X
-                            {feature}
+                            -{feature}
                             </li>
                         ))}
                         </ul>
