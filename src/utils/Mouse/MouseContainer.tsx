@@ -1,30 +1,29 @@
+import React from 'react';
 import { mouseDefault } from "./MouseTracker"; 
 import { useAtom } from "jotai";
 
-interface MouseContainerProps {
-    className?:string,
+type MouseContainerProps = {
+    className?: string,
     text?: string; 
     color?: string;
     state?: string;
     children: React.ReactNode
 }
 
-export default function MouseContainer({className, text, color, state, children}:MouseContainerProps) {
+const MouseContainer: React.FC<MouseContainerProps> = ({ className, text, color, state, children }) => {
     const [, setMouseState] = useAtom(mouseDefault);
 
-    const handleMouseEnter = (e:any) => {
-        // console.log("E: ", e.target);
-
+    const handleMouseEnter = React.useCallback((e: React.MouseEvent) => {
         setMouseState(prevState => ({
             ...prevState,
-            hover: e.target,
+            hover: e.target as HTMLElement,
             text: text,
             color: color,
             state: state,
         }));
-    }
+    }, [setMouseState, text, color, state]);
 
-    const handleMouseLeave = () => {
+    const handleMouseLeave = React.useCallback(() => {
         setMouseState(prevState => ({
             ...prevState,
             hover: undefined,
@@ -32,11 +31,20 @@ export default function MouseContainer({className, text, color, state, children}
             color: undefined,
             state: undefined,
         }));
-    }
-    
+    }, [setMouseState]);
+
     return (
         <div className={className} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
             {children}
         </div>
-    )
-}
+    );
+};
+
+export default React.memo(MouseContainer, (prevProps, nextProps) => {
+    // Implementing a custom comparison function if needed
+    return prevProps.className === nextProps.className &&
+           prevProps.text === nextProps.text &&
+           prevProps.color === nextProps.color &&
+           prevProps.state === nextProps.state &&
+           prevProps.children === nextProps.children;
+});
