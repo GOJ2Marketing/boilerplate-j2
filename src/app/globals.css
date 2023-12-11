@@ -6,7 +6,7 @@
 
   /* layout */
   body {
-    @apply bg-black text-white text-base lg:text-lg
+    @apply bg-light text-dark dark:bg-dark dark:text-white text-base lg:text-lg
   }
 
   section {
