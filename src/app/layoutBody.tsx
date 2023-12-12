@@ -9,11 +9,13 @@ import {NextUIProvider} from "@nextui-org/react"
 import MouseTracker from '@/utils/Mouse/MouseTracker'
 import { useAtom } from 'jotai'
 import { atomWithStorage } from 'jotai/utils'
+import { useEnableSanityOverlays } from '@/utils/enableSanityOverlays'
 
 export const theme = atomWithStorage('theme', 'light');
 
 export default function LayoutBody({ children}: {children: React.ReactNode}) {
     const [appTheme] = useAtom(theme);
+    useEnableSanityOverlays();
 
     return (
         <html className={`${appTheme}`} lang="en">

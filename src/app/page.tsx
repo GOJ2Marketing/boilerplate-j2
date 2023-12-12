@@ -85,7 +85,7 @@ export default function Home() {
             </section>
 
             <section>
-                <Marquee baseVelocity={2} className="bg-light text-dark">
+                <Marquee baseVelocity={2} className="dark:bg-light dark:text-dark bg-dark text-white">
                     <div className="bigTitle pb-1 sm:pb-2 md:pb-3 lg:pb-5 pt-0">&lt;Marquee/&gt;</div>
                 </Marquee>
             </section>

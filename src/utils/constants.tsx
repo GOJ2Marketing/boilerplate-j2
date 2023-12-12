@@ -4,4 +4,5 @@ export const NAVIGATION = [
     { title: 'Services', url: '/services' },
     { title: 'Blog', url: '/blog' },
     { title: 'Contact Us', url: '/contact-us' },
+    { title: '404', url: '/fake-url-123' }
 ]
