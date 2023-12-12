@@ -11,6 +11,7 @@ import { presentationTool } from 'sanity/presentation'
 import {apiVersion, dataset, projectId} from './sanity/env'
 import {schema} from './sanity/schema'
 import { sanityDeskStructure } from './sanityDeskStructure'
+import { locate } from './sanityLocate'
 
 const SANITY_STUDIO_PREVIEW_URL = (
 	process.env.SANITY_STUDIO_PREVIEW_URL || 'http://localhost:3000'
@@ -24,6 +25,6 @@ export default defineConfig({
     plugins: [
         deskTool({ structure: sanityDeskStructure }),
         visionTool({ defaultApiVersion: apiVersion }),
-        presentationTool({ previewUrl: SANITY_STUDIO_PREVIEW_URL }),
+        presentationTool({ previewUrl: SANITY_STUDIO_PREVIEW_URL, locate }),
     ],
 })

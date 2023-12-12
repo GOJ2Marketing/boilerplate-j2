@@ -10,7 +10,24 @@ export const getBlogPageData = async (slug?: string, not: boolean = false) => {
     }
 
     query += `{
-        ...
+        _id,
+        title,
+        slug,
+        "author": author->{
+            _id,
+            name,
+            "image": image.asset->url
+        },
+        publishedAt,
+        "categories": categories[]->{
+            title,
+            description
+        },
+        mainImage {
+          "url": asset->url,
+          alt
+        },
+        body,
     }`;
 
     const data = await client.fetch(query);
