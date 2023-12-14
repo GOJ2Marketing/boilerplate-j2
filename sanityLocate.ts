@@ -2,42 +2,37 @@ import { DocumentLocationResolver } from 'sanity/presentation';
 import { map } from 'rxjs';
 
 export const locate: DocumentLocationResolver = (params, context) => {
-  console.log('Locate function called with params:', params);
+    if (params.type === 'post') {
+        const doc$ = context.documentStore.listenQuery(
+            `*[_id == $id][0]{slug}`, 
+            params,
+            { perspective: "previewDrafts" }
+        );
 
-  if (params.type === 'post') {
-    console.log('Fetching document with ID:', params.id);
+        return doc$.pipe(
+            map((doc) => {
+                if (!doc || !doc.slug?.current) {
+                    console.log('No document or slug found');
+                    return null;
+                }
 
-    const doc$ = context.documentStore.listenQuery(
-      `*[_type == 'post' && _id == $id]{title, slug}`,
-      { id: params.id }, // Use the id from params
-      {} // Options object
-    );
+                const locationUrl = `/blog/${doc.slug.current}`;
 
-    return doc$.pipe(
-      map((doc) => {
-        console.log('Document fetched:', doc);
+                return {
+                    locations: [
+                        {
+                            title: doc.title || 'Untitled Post',
+                            href: locationUrl,
+                        },
+                        {
+                            title: "Posts",
+                            href: "/",
+                        }
+                    ],
+                };
+            })
+        );
+    }
 
-        if (!doc || !doc.slug?.current) {
-          console.log('No document or slug found');
-          return null;
-        }
-
-        const locationUrl = `/blog/${doc.slug.current}`;
-        console.log('Location URL:', locationUrl);
-
-        return {
-          locations: [
-            {
-              title: doc?.title || 'Untitled Post',
-              href: locationUrl,
-            },
-          ],
-        };
-      })
-    );
-  } else {
-    console.log('Document type is not post');
-  }
-
-  return null;
+    return null;
 };

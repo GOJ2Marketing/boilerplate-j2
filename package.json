@@ -13,6 +13,7 @@
     "@heroicons/react": "^2.0.18",
     "@motionone/utils": "^10.16.3",
     "@nextui-org/react": "^2.2.9",
+    "@portabletext/react": "^3.0.11",
     "@sanity/image-url": "^1.0.2",
     "@sanity/overlays": "^2.1.5",
     "@sanity/vision": "^3.20.0",
@@ -25,7 +26,7 @@
     "react-dom": "^18",
     "react-icons": "^4.12.0",
     "rxjs": "^7.8.1",
-    "sanity": "^3.21.1",
+    "sanity": "^3.21.3",
     "styled-components": "^6.1.1"
   },
   "devDependencies": {

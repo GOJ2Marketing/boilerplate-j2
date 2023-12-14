@@ -9,7 +9,7 @@ export const getBlogPageData = async (slug?: string, not: boolean = false) => {
         query += `[slug.current == "${slug}"]`;
     }
 
-    query += `{
+    query += `| order(publishedAt desc) {
         _id,
         title,
         slug,
@@ -28,6 +28,7 @@ export const getBlogPageData = async (slug?: string, not: boolean = false) => {
           alt
         },
         body,
+        excerpt,
     }`;
 
     const data = await client.fetch(query);

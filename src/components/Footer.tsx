@@ -4,7 +4,7 @@ import PoweredByJ2 from "./poweredBy";
 
 export default function Footer() {
     return (
-        <footer className="bg-gray-900 text-white">
+        <footer className="bg-gray-300 dark:bg-black">
             <section>
                 
                 <div data-row>
@@ -20,7 +20,7 @@ export default function Footer() {
                 </div>
 
                 <div data-row>
-                    <PoweredByJ2 className="text-center opacity-20 font-extralight text-sm" />
+                    <PoweredByJ2 className="text-center opacity-30 font-extralight text-sm" />
                 </div>
 
             </section>

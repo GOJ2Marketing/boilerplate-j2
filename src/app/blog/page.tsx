@@ -4,7 +4,7 @@ import { locate } from "../../../sanityLocate";
 
 export default async function Blog() {
     const data = await getBlogPageData();
-    console.log("DATA: ", data.data);
+    // console.log("DATA: ", data.data);
 
     return (
         <section>

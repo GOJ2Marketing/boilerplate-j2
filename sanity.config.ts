@@ -6,6 +6,8 @@ import { visionTool } from '@sanity/vision'
 import { defineConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
 import { presentationTool } from 'sanity/presentation'
+import { MdDevices } from "react-icons/md";
+import { VscJson } from "react-icons/vsc";
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
 import {apiVersion, dataset, projectId} from './sanity/env'
@@ -23,8 +25,8 @@ export default defineConfig({
     dataset,
     schema, // Add and edit the content schema in the './sanity/schema' folder
     plugins: [
-        deskTool({ structure: sanityDeskStructure }),
-        visionTool({ defaultApiVersion: apiVersion }),
-        presentationTool({ previewUrl: SANITY_STUDIO_PREVIEW_URL, locate }),
+        deskTool({ structure: sanityDeskStructure, title: "Site Data" }),
+        visionTool({ defaultApiVersion: apiVersion, title: "Query", icon: VscJson }),
+        presentationTool({ previewUrl: SANITY_STUDIO_PREVIEW_URL, locate, title: "Visual Builder", icon: MdDevices }),
     ],
 })

@@ -9,6 +9,7 @@ export default defineType({
       name: 'title',
       title: 'Title',
       type: 'string',
+      validation: Rule => Rule.required().error("A title is required."),
     }),
     defineField({
       name: 'slug',
@@ -18,12 +19,14 @@ export default defineType({
         source: 'title',
         maxLength: 96,
       },
+      validation: Rule => Rule.required().error("A slug is required."),
     }),
     defineField({
       name: 'author',
       title: 'Author',
       type: 'reference',
       to: {type: 'author'},
+      validation: Rule => Rule.required().error("An author is required."),
     }),
     defineField({
       name: 'mainImage',
@@ -38,7 +41,8 @@ export default defineType({
           type: 'string',
           title: 'Alternative Text',
         }
-      ]
+      ],
+      validation: Rule => Rule.required().error("An image is required."),
     }),
     defineField({
       name: 'categories',
@@ -50,12 +54,19 @@ export default defineType({
       name: 'publishedAt',
       title: 'Published at',
       type: 'datetime',
+      readOnly: true
     }),
     defineField({
       name: 'body',
       title: 'Body',
       type: 'blockContent',
     }),
+    defineField({
+      name: "excerpt",
+      title: "Excerpt",
+      type: "text",
+      validation: Rule => Rule.required().min(100).max(200).error("Excerpt should be more than 100 characters and less than 200."),
+    })
   ],
 
   preview: {
