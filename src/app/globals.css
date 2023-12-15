@@ -10,11 +10,11 @@
   }
 
   section {
-    @apply w-full py-16
+    @apply w-full py-16 relative
   }
 
   div[data-row] {
-    @apply w-4/5 max-w-6xl mx-auto py-8
+    @apply w-4/5 max-w-6xl mx-auto py-8 relative
   }
 
   .space {
