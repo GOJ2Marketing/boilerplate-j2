@@ -1,4 +1,4 @@
-import { defineField } from "sanity";
+import { defineArrayMember, defineField } from "sanity";
 
 export const HeroSelector = [
     // Select which hero section you wantz
@@ -17,13 +17,6 @@ export const HeroSelector = [
     }),
 
     // Fields
-    defineField({
-        name: 'title',
-        title: 'Title',
-        type: 'string',
-        hidden: ({ parent }) => { return parent?.heroType == undefined },
-    }),
-
     defineField({
         name: 'tagline',
         title: 'Tagline',
@@ -49,78 +42,31 @@ export const HeroSelector = [
         type: 'text',
         hidden: ({ parent }) => { return parent?.heroType == undefined },
     }),
-
-    defineField({
-        name: 'button',
-        title: 'Button',
-        type: 'object',
-        fields: [
-            defineField({
-                name: 'text',
-                title: 'Text',
-                type: 'string',
-            }),
-            defineField({
-                name: 'link',
-                title: 'Link',
-                type: 'string',
-            }),
-            defineField({
-                name: 'variant',
-                title: 'Variant',
-                type: 'string',
-                options: {
-                    list: [
-                        { title: 'Primary', value: 'primary' },
-                        { title: 'Secondary', value: 'secondary' },
-                        { title: 'Dark', value: 'dark' },
-                        { title: 'Light', value: 'light' },
-                        { title: 'Clear', value: 'clear' },
-                    ]
-                }
-            }),
-        ],
-        hidden: ({ parent }) => { return parent?.heroType == undefined },
-    }),
-
-    defineField({
-        name: 'button2',
-        title: 'Button 2',
-        type: 'object',
-        fields: [
-            defineField({
-                name: 'text',
-                title: 'Text',
-                type: 'string',
-            }),
-            defineField({
-                name: 'link',
-                title: 'Link',
-                type: 'string',
-            }),
-            defineField({
-                name: 'variant',
-                title: 'Variant',
-                type: 'string',
-                options: {
-                    list: [
-                        { title: 'Primary', value: 'primary' },
-                        { title: 'Secondary', value: 'secondary' },
-                        { title: 'Dark', value: 'dark' },
-                        { title: 'Light', value: 'light' },
-                        { title: 'Clear', value: 'clear' },
-                    ]
-                }
-            }),
-        ],
-        hidden: ({ parent }) => { return parent?.heroType == undefined },
-    }),
     
     defineField({
         name: 'image',
         title: 'Image',
         type: 'image',
-        hidden: ({ parent }) => { return parent?.heroType == undefined },
+        hidden: ({ parent }) => { return parent?.heroType == 'hero3' || parent?.section == '' },
+    }),
+
+    defineField({
+        name: 'images',
+        title: 'Images',
+        type: 'array',
+        of: [
+            defineArrayMember({ 
+                type: 'image', 
+            })
+        ],
+        hidden: ({ parent }) => { return parent?.heroType !== 'hero3' },
+    }),
+
+    defineField({
+        name: 'imageOffset',
+        title: 'Image Offset (%)',
+        type: 'number',
+        hidden: ({ parent }) => { return parent?.heroType !== 'hero3' },
     }),
 
     defineField({

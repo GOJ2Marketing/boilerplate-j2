@@ -1,4 +1,5 @@
 import { defineField, defineType } from 'sanity';
+import { accessibleImage } from './objects/accessibleImage';
 
 export default defineType({
     name: 'page',
@@ -24,6 +25,11 @@ export default defineType({
             title: 'Sections',
             type: 'array',
             of: [{ type: 'sectionSelection' }],
+        }),
+        defineField({
+            name: 'seo',
+            title: 'SEO',
+            type: 'seo',
         }),
     ],
 })

@@ -7,7 +7,9 @@ import author from './schemas/author'
 import page from './schemas/page'
 import service from './schemas/service'
 import { sectionSelection } from './schemas/builder/sectionSelection'
+import { accessibleImage } from './schemas/objects/accessibleImage'
+import { SEO } from './schemas/objects/SEO'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [page, service, post, author, category, blockContent, sectionSelection],
+  types: [page, service, post, author, category, blockContent, sectionSelection, accessibleImage, SEO],
 }

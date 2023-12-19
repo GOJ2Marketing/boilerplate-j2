@@ -1,6 +1,6 @@
 import { defineField } from 'sanity';
 import { HeroSelector } from './heroSections';
-import { CTASelector } from './CTASelection';
+import { CTASelector } from './CTASections';
 
 export const sectionSelection = {
     name: 'sectionSelection',
@@ -23,6 +23,76 @@ export const sectionSelection = {
                 ],
                 direction: 'vertical'
             },
+        }),
+
+        defineField({
+            name: 'title',
+            title: 'Title',
+            type: 'string',
+        }),
+
+        defineField({
+            name: 'button',
+            title: 'Button',
+            type: 'object',
+            fields: [
+                defineField({
+                    name: 'text',
+                    title: 'Text',
+                    type: 'string',
+                }),
+                defineField({
+                    name: 'link',
+                    title: 'Link',
+                    type: 'string',
+                }),
+                defineField({
+                    name: 'variant',
+                    title: 'Variant',
+                    type: 'string',
+                    options: {
+                        list: [
+                            { title: 'Primary', value: 'primary' },
+                            { title: 'Secondary', value: 'secondary' },
+                            { title: 'Dark', value: 'dark' },
+                            { title: 'Light', value: 'light' },
+                            { title: 'Clear', value: 'clear' },
+                        ]
+                    }
+                }),
+            ],
+        }),
+    
+        defineField({
+            name: 'button2',
+            title: 'Button 2',
+            type: 'object',
+            fields: [
+                defineField({
+                    name: 'text',
+                    title: 'Text',
+                    type: 'string',
+                }),
+                defineField({
+                    name: 'link',
+                    title: 'Link',
+                    type: 'string',
+                }),
+                defineField({
+                    name: 'variant',
+                    title: 'Variant',
+                    type: 'string',
+                    options: {
+                        list: [
+                            { title: 'Primary', value: 'primary' },
+                            { title: 'Secondary', value: 'secondary' },
+                            { title: 'Dark', value: 'dark' },
+                            { title: 'Light', value: 'light' },
+                            { title: 'Clear', value: 'clear' },
+                        ]
+                    }
+                }),
+            ],
         }),
 
         // Provide Hero Information
