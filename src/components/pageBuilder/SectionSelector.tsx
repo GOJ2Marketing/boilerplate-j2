@@ -5,7 +5,7 @@ import Hero2 from "./Hero/Hero2";
 import Hero3 from "./Hero/Hero3";
 
 export default function SectionSelector({ data }:any) {
-    // console.log("Hero Data: ", data);
+    // console.log("Data Passed: ", data);
 
     return (
         <>
